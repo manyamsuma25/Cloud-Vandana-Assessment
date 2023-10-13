@@ -1,0 +1,112 @@
+CALCULATOR CODE
+
+1. Create a basic calculator using HTML, CSS, and JavaScript with the functionality of add,
+subtract, multiply and divide. Use the following picture forreference.
+..................................................................................................................
+
+HTML CODE
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('/')">/</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+..................................................................................................................
+
+CSS CODE
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px #ccc;
+    text-align: center;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+input {
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+................................................................................................................
+
+JAVASCRIPT CODE
+
+let displayValue = '';
+
+function appendToDisplay(value) {
+    displayValue += value;
+    document.getElementById('display').value = displayValue;
+}
+
+function clearDisplay() {
+    displayValue = '';
+    document.getElementById('display').value = displayValue;
+}
+
+function calculate() {
+    try {
+        displayValue = eval(displayValue);
+        document.getElementById('display').value = displayValue;
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
+}
+................................................................................................................
